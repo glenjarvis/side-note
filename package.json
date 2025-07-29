@@ -1,0 +1,40 @@
+{
+  "name": "side-note",
+  "version": "0.1.0",
+  "type": "module",
+  "homepage": "https://github.com/glenjarvis/side-note#readme",
+  "description": "A lightweight, embeddable JS tool for adding side comments to any webpage or static document.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "eslint": "^9.32.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glenjarvis/side-note.git"
+  },
+  "bugs": {
+    "url": "https://github.com/glenjarvis/side-note/issues"
+  },
+  "main": "dist/sidenote.js",
+  "types": "dist/sidenote.d.ts",
+  "keywords": [
+    "annotation",
+    "commenting",
+    "inline-comments",
+    "javascript",
+    "tool",
+    "markdown",
+    "web",
+    "notes",
+    "documentation",
+    "side-comments"
+  ],
+  "author": "Glen Jarvis <glen@example.com>",
+  "license": "MIT"
+}
