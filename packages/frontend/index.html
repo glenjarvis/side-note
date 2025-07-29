@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SideNote Widget Test</title>
+  </head>
+  <body>
+    <h1>Test Page</h1>
+    <p>
+      This is an example paragraph.
+      <span id="note-anchor">Add sidenote here</span>
+    </p>
+
+    <script type="module">
+      import { initSideNote } from "./src/side-note.ts";
+
+      initSideNote();
+    </script>
+  </body>
+</html>

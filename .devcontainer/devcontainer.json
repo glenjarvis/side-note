@@ -18,7 +18,7 @@
     }
   },
   "postCreateCommand": "if [ -f package-lock.json ]; then npm ci; else npm install; fi",
-  "forwardPorts": [3000],
+  "forwardPorts": [3000, 8080],
   "mounts": [
     "source=node_modules,target=/workspace/node_modules,type=volume"
   ],

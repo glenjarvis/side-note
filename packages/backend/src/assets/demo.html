@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- This document is intended to be loaded directly by the browser after package built -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SideNote: Production Mode</title>
+  </head>
+  <body>
+    <h1>Demo: SideNote Widget</h1>
+    <p>
+      Here's a paragraph with a <span id="note-anchor">sidenote anchor</span>.
+    </p>
+    <p id="app"></p>
+
+    <script type="module">
+      import { initSideNote } from './scripts/side-note.js';
+
+      initSideNote();
+    </script>
+  </body>
+</html>

@@ -89,3 +89,18 @@ On any HTML page:
 - **No framework lock-in**: Plays well with static sites, React, or anything else.
 - **Empower learners**: Show the power of DOM, selectors, and simple APIs.
 - **Fun to build**: Use it as a starter for more advanced projects later.
+
+
+## TODO
+
+```
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": false,
+    ...
+  }
+}
+```
