@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 2rem;
+  max-width: 800px;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+code {
+  background-color: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.example {
+  background-color: #e8f5e9;
+  padding: 0.5em;
+  border-left: 4px solid #4caf50;
+  margin: 1em 0;
+}

@@ -4,16 +4,135 @@
   <head>
     <meta charset="UTF-8" />
     <title>SideNote: Production Mode</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./sidenote-style.css" />
   </head>
   <body>
     <h1>Demo: SideNote Widget</h1>
     <p>
-      Here's a paragraph with a <span id="note-anchor">sidenote anchor</span>.
+      <strong>SideNote</strong> is a simple JavaScript application that allows
+      you to attach notes to specific parts of a webpage &mdash; ideal for use
+      with online books, long-form articles, and academic web content. It
+      provides a clean, accessible way to display annotations as hoverable or
+      clickable popups alongside your text.
     </p>
-    <p id="app"></p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li>Attach notes to sentences, phrases, or words with ease.</li>
+      <li>Hover- or click-based note display (mobile-friendly).</li>
+      <li>Minimal HTML and CSS required; customizable and lightweight.</li>
+      <li>Supports semantic annotation with
+        <span class="note-wrapper">
+        accessibility
+        <span class="note-popup">Check spelling</span>
+        </span>
+        in mind.
+
+      </li>
+    </ul>
+
+    <h2>How to Use SideNote</h2>
+    <h3>1. Include SideNote in Your Page</h3>
+    <p>
+      Include the SideNote JavaScript and CSS (if provided) in your HTML file.
+      If SideNote is modular, you may load it via a CDN or local script:
+    </p>
+    <pre><code>&lt;script src="sidenote.js" defer&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="sidenote.css"&gt;</code></pre>
+
+    <h3>2. Markup Your HTML</h3>
+    <p>
+      Wrap the target text with a <code>span</code> and insert a note using a
+      nested span:
+    </p>
+    <div class="example">
+      <code>
+        &lt;span class="note-wrapper"&gt; Important term &lt;span
+        class="note-popup"&gt; This is a note about the term. &lt;/span&gt;
+        &lt;/span&gt;
+      </code>
+    </div>
+
+    <h3>3. Style Your Notes</h3>
+    <p>
+      You can use basic CSS to control how notes appear. A common setup is
+      showing them on hover or click:
+    </p>
+    <pre><code>.note-wrapper {
+  position: relative;
+  cursor: pointer;
+  color: #0070f3;
+  text-decoration: dotted underline;
+}
+
+.note-popup {
+  display: none;
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  max-width: 250px;
+}
+
+.note-wrapper:hover .note-popup,
+.note-wrapper:focus-within .note-popup {
+  display: block;
+}</code></pre>
+
+    <h2>Mobile Support</h2>
+    <p>
+      To support touch devices, consider using <code>:focus-within</code> or
+      click-to-toggle behavior with a small JavaScript helper. You can also
+      adjust the position or use a modal-style display for smaller screens.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      Here is an example sentence with a note attached:
+      <span class="note-wrapper">
+        photosynthesis
+        <span class="note-popup"
+          >The process by which green plants use sunlight to synthesize foods
+          from carbon dioxide and water.</span
+        >
+      </span>
+      is vital for life on Earth.
+
+      <!-- <span> more textr</span>
+      <span class="note-wrapper">
+        <span class="note-popup">
+          <div class="note-content">
+            <strong class="note-title">Note:</strong>
+            <span>This is a more structured popup with a title and text.</span>
+          </div>
+        </span>
+      </span> -->
+    </p>
+
+    <h2>Advanced Use</h2>
+    <p>
+      SideNote can be extended to auto-inject notes from JSON, markdown files,
+      or CMS sources. With JavaScript, you can dynamically associate text ranges
+      with note metadata, allowing for collaborative annotations or comment
+      layers.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      SideNote provides a lightweight, flexible solution for adding contextual
+      notes to web documents. Whether you are building an online textbook, a
+      research platform, or a blog, SideNote helps make your content more
+      interactive and informative.
+    </p>
 
     <script type="module">
-      import { initSideNote } from './scripts/side-note.js';
+      import { initSideNote } from "./scripts/side-note.js";
 
       initSideNote();
     </script>

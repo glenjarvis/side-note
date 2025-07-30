@@ -1,0 +1,36 @@
+
+.note-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #fff7d6;
+  padding: 0.1em 0.2em;
+  border-radius: 5%;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.note-wrapper:hover {
+  background-color: #ffe99f;
+}
+
+.note-popup {
+  display: none;
+  position: absolute;
+  top: 2em;
+  background: #fff8dc;
+  border: 0.1em solid #e0c97f;
+  border-radius: 5%;
+  padding: 0.75em 1em;
+  font-size: 0.9em;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.15);
+  top: 2em;
+  left: 0;
+  z-index: 100;
+  line-height: 1.4;
+}
+
+.note-wrapper:hover .note-popup,
+.note-wrapper:focus-within .note-popup {
+  display: block;
+}

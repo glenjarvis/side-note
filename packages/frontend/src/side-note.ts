@@ -1,16 +1,13 @@
 console.log('SideNote initialized');  
 
-const app = document.getElementById('app');
+const note = document.getElementById('note-anchor');
 
-if (app) {
-  app.innerHTML = `
-    <h1>SideNote</h1>
-    <p>This is a test page for embedding SideNote comments.</p>
-    <p>Click on a paragraph to add a comment (feature coming soon).</p>
+if (note) {
+  note.innerHTML = `
+    <p class="note">This is a test page for embedding SideNote comments.</p>
   `;
 }
 
-// In the future, you might expose something like:
 export function initSideNote() {
   console.log('SideNote logic goes here');
 }
