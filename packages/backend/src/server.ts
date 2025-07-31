@@ -2,7 +2,7 @@ import express from "express";
 import type { Request, Response } from "express";
 import path from "path";
 
-import { noteController } from "./notesController.js";
+import { noteController } from "./controllers/notesController.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,8 +22,7 @@ app.get("/notes", noteController.getNotes, (_: Request, response: Response) => {
   response.json(response.locals.notes);
 });
 
-app.post("/notes", noteController.saveNote, (request: Request, response: Response) => {
-  console.log("New note:", request.body);
+app.post("/notes", noteController.saveNote, (_: Request, response: Response) => {
   response.status(201).json(response.locals.savedNote);
 });
 

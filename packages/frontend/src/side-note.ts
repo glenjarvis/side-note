@@ -2,6 +2,7 @@ import getCssSelector from "css-selector-generator";
 
 const NODE_ELEMENT_TYPE = 1; // 1: Node Element; 3: Text Node
 
+// TODO: Find way to DRY with backend. This is duplicated in backend:
 type SideNoteRecord = {
   pageURL: string;
   selector: string;
@@ -17,7 +18,7 @@ type SideNoteRecord = {
  * On "MouseUp", check if a text selection (highlight) was
  * made on the page.
  */
-function addNoteToHighlight(): SideNoteRecord|void {
+function addNoteToHighlight(): SideNoteRecord | void {
   const selection = window.getSelection();
   const record: SideNoteRecord = {
     pageURL: window.location.href,

@@ -1,3 +1,5 @@
+import { noteModel } from "../models/noteModel.js";
+
 /**
  * @param {import("express").Request} _req
  * @param {import("express").Response} response
@@ -6,19 +8,19 @@
 // @ts-ignore
 const getNotes = (_req, response, next) => {
   // TODO: Determine why I need @ts-ignore
-  response.locals.notes = [{ id: 1, text: "Note from NoteController" }];
+  response.locals.notes = noteModel.find();
   next();
 }
 
 /**
- * @param {import("express").Request} _req
+ * @param {import("express").Request} request
  * @param {import("express").Response} response
  * @param {import("express").NextFunction} next
  */
 // @ts-ignore
-const saveNote = (_req, response, next) => {
+const saveNote = (request, response, next) => {
   // TODO: Determine why I need @ts-ignore
-  response.locals.savedNote = [{ id: 2, text: "Saved NoteX" }];
+  response.locals.savedNote = noteModel.insertOne(request.body);
   next();
 }
 
