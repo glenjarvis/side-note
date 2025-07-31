@@ -2,6 +2,8 @@ import express from "express";
 import type { Request, Response } from "express";
 import path from "path";
 
+import { noteController } from "./notesController.js";
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -16,13 +18,13 @@ app.get('/', (_: Request, response: Response) => {
   response.redirect('/assets/demo.html');
 })
 
-app.get("/notes", (_: Request, response: Response) => {
-  response.json([{ id: 1, text: "Hello from backend!" }]);
+app.get("/notes", noteController.getNotes, (_: Request, response: Response) => {
+  response.json(response.locals.notes);
 });
 
-app.post("/notes", (request: Request, response: Response) => {
+app.post("/notes", noteController.saveNote, (request: Request, response: Response) => {
   console.log("New note:", request.body);
-  response.status(201).json({ message: "Note received" });
+  response.status(201).json(response.locals.savedNote);
 });
 
 app.listen(PORT, () => {
