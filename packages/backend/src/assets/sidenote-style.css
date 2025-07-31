@@ -1,7 +1,7 @@
 
 .note-wrapper {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
   background-color: #fff7d6;
   padding: 0.1em 0.2em;
@@ -14,9 +14,11 @@
   background-color: #ffe99f;
 }
 
-.note-popup {
+.sticky-note {
   display: none;
+  text-align: center;
   position: absolute;
+  min-width: 15em;
   top: 2em;
   background: #fff8dc;
   border: 0.1em solid #e0c97f;
@@ -30,7 +32,7 @@
   line-height: 1.4;
 }
 
-.note-wrapper:hover .note-popup,
-.note-wrapper:focus-within .note-popup {
+.note-wrapper:hover .sticky-note,
+.note-wrapper:focus-within .sticky-note {
   display: block;
 }
