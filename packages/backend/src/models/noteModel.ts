@@ -14,7 +14,7 @@ const defaultDB: SideNoteRecord[] = [
     pageURL: "http://localhost:3000/assets/demo.html",
     selector:
       ":root > :nth-child(2) > :nth-child(4) > :nth-child(4) > :nth-child(1)",
-    targetText: "accessibility",
+    targetText: "accesibility",
     noteText: "Check spelling",
     startOffset: 9,
     endOffset: 22,

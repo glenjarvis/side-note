@@ -1,113 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SideNote Documentation</title>
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 2rem;
-        max-width: 800px;
-      }
-      h1,
-      h2,
-      h3 {
-        color: #333;
-      }
-      code {
-        background-color: #f4f4f4;
-        padding: 0.2em 0.4em;
-        border-radius: 4px;
-        font-family: monospace;
-      }
-      pre {
-        background-color: #f4f4f4;
-        padding: 1em;
-        border-radius: 6px;
-        overflow-x: auto;
-      }
-      .example {
-        background-color: #e8f5e9;
-        padding: 0.5em;
-        border-left: 4px solid #4caf50;
-        margin: 1em 0;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>SideNote</h1>
-    <p>
-      <strong>SideNote</strong> is a simple JavaScript application that allows
-      you to attach notes to specific parts of a webpage &mdash; ideal for use
-      with online books, long-form articles, and academic web content. It
-      provides a clean, accessible way to display annotations as hoverable or
-      clickable popups alongside your text.
-    </p>
 
-    <h2>Key Features</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SideNote Documentation</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      max-width: 800px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+    }
+
+    code {
+      background-color: #f4f4f4;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .example {
+      background-color: #e8f5e9;
+      padding: 0.5em;
+      border-left: 4px solid #4caf50;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>SideNote</h1>
+  <p>
+    <strong>SideNote</strong> is a simple JavaScript application that allows
+    you to attach notes to specific parts of a webpage &mdash; ideal for use
+    with online books, long-form articles, and academic web content. It
+    provides a clean, accessible way to display annotations as hoverable or
+    clickable popups alongside your text.
+  </p>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li>Attach notes to sentences, phrases, or words with ease.</li>
+    <li>Hover- or click-based note display (mobile-friendly).</li>
+    <li>Minimal HTML and CSS required; customizable and <span class="note-wrapper">
+        liteweight<span class="sticky-note">Check spelling</span>.
+      </span></li>
+  </ul>
+
+  <h2>Problem</h2>
+  <p>I once read an online technical book where notes could be made in the margins. Those reading the book would give immediate feedback through notes
+    on the margins of the book. This feedback helped the authors iterate quickly on the book. They stopped doing this once the book was published. I can't find that tool. I want that tool
+    for <span class="note-wrapper">
+      a technical book that I am writing<span class="sticky-note">Okay, let's be fair. With this program, I barely have
+        time to update my grocery list. That project is on hold.</span>.</p>
+
+  <h2>Solution</h2>
+  <p>
     <ul>
-      <li>Attach notes to sentences, phrases, or words with ease.</li>
-      <li>Hover- or click-based note display (mobile-friendly).</li>
-      <li>Minimal HTML and CSS required; customizable and lightweight.</li>
-      <li>
-        Supports semantic annotation with
-        <span class="note-wrapper">
-          accessibility
-          <span class="sticky-note">Check spelling</span>
-        </span>
-        in mind.
+      <li>Pure vanilla JavaScript on front-end</li>
+      <li>With mouseUp event listener and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection">MDN: Window.getSelection</a></li>
+      <li>NPM package for finding CSS selector for selected text <a href="https://www.npmjs.com/package/css-selector-generator/v/2.1.2">NPM css-selector-generator</a>
+      <div>Example:<pre><code>root > :nth-child(2) > :nth-child(18) > :nth-child(1)</code></pre></div>
+      
+
+      </li>
+      <li>Express Backend: <pre><code>GET /notes</code></pre><pre><code>POST /notes</code></pre></li>
+      <li>Simple JS database (for proof of concept)
+        <div>Example:<pre><code>{
+  pageURL: "http://localhost:3000/assets/demo.html",
+  selector: ":root > :nth-child(2) > :nth-child(18) > :nth-child(1)",
+  targetText: "photosynthesis",
+  noteText:
+    "The process by which green plants use sunlight to synthesize foods from carbon dioxide and water.",
+  startOffset: 9,
+  endOffset: 23,
+  context: "",
+  isSaved: true,
+},
+</pre></code></div>
+
       </li>
     </ul>
+  </p>
+  <p></p>
+  <h2>Most Interesting Technical Challenges</h2>
+  <p>Focus on:
+  <ul>
+    <li>
+      <span class="note-wrapper">Typescript<span class="sticky-note">This is an area where I want to focus on building
+          my skills</span>
+    </li>
+    <li>
+      Packaging
+      <span class="note-wrapper">I wanted to structure this so that I could upload to NPM at a 
+        future date. I discovered workspaces and subpackages.<span class="sticky-note">Oi! This took 6 hours</span>
+      </span>
+      <div>
+        Top level package.json snippet:
+        <code><pre>{
+  "name": "side-note-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/frontend",
+    "packages/backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=side-note",
+    "front-build": "npm run build --workspace=side-note",
+    "prod": "npm run dev --workspace=side-note-backend",
+    "back-clean": "npm run clean --workspace=side-note-backend",
+    "back-check": "npm run check --workspace=side-note-backend"
+  }
+}</pre></code>
+      </div>
+      <div>
+        <strong>packages/frontend/package.json</strong>:
+        <pre><code>{
+  "name": "side-note",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/side-note.js",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "clean": "rm -rf dist",
+    "preview": "vite preview"
+  },
+  ....</code></pre>
+      </div>
+      <div>
+        <strong>packages/backend/package.json</strong>:
+        <pre><code>{
+  "name": "side-note-backend",
+  "author": "Glen Jarvis <glen@example.com>",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec \"node --loader ts-node/esm\" src/server.ts",
+    "check": "tsc --noEmit",
+    "build": "tsc",
+    "clean": "rm -rf dist"
+....
+        </code></pre>
+      </div>
+    </li>
+    <li>NPM css-selector-generator (an external tool that can walk the DOM to get current selection path)</li>
+    <li>Currently unsolved issues: If page changes after SideNote taken. We have text/location to confirm it. Dare we try to adjust and ask for input</li>
+    <li><span class="note-wrapper">Time to implement proper note entry at text node.<span class="sticky-note">For now, just pop up prompt</span></span></li>
+    <li>Allow copy/paste without automatic selection</li>
+  </ul>
+  </p>
 
-    <h2>How to Use SideNote</h2>
-    <h3>1. Include SideNote in Your Page</h3>
-    <p>
-      Include the SideNote JavaScript and CSS (if provided) in your HTML file.
-      If SideNote is modular, you may load it via a CDN or local script:
-    </p>
-    <pre><code>&lt;script src="sidenote.js" defer&gt;&lt;/script&gt;
+  <h2>Demo</h2>
+  <p>I need a volunteer to choose some text to select from page and a note to place in text</p>
+  <p><strong>Remind me to have my devtools console up so you can see note text</strong></p>
+
+  <h2>Competitor Analysis</h2>
+  <p>There are similar tools in academic circles. An example is: <a href="https://web.hypothes.is/">Hypothes.is</a>.
+    However, they are not free and not simple to inject into any page.</p>
+
+  <h2>How to Use SideNote</h2>
+  <h3>1. Include SideNote in Your Page</h3>
+  <p>
+    Include the SideNote JavaScript and CSS (if provided) in your HTML file.
+    If SideNote is modular, you may load it via a CDN or local script:
+  </p>
+  <pre><code>&lt;script src="sidenote.js" defer&gt;&lt;/script&gt;
 &lt;link rel="stylesheet" href="sidenote.css"&gt;</code></pre>
 
-    <h3>2. Markup Your HTML</h3>
-    <p>
-      Wrap the target text with a <code>span</code> and insert a note using a
-      nested span:
-    </p>
-    <div class="example">
-      <code>
+  <h3>2. Markup Your HTML</h3>
+  <p>
+    Wrap the target text with a <code>span</code> and insert a note using a
+    nested span:
+  </p>
+  <div class="example">
+    <code>
         &lt;span class="note-wrapper"&gt; Important term &lt;span
         class="sticky-note"&gt; This is a note about the term. &lt;/span&gt;
         &lt;/span&gt;
       </code>
-    </div>
+  </div>
 
-    <h3>3. Style Your Notes</h3>
-    <p>
-      You can use basic CSS to control how notes appear. A common setup is
-      showing them on hover or click:
-    </p>
-    <pre><code>.note-wrapper {
+  <h3>3. Style Your Notes</h3>
+  <p>
+    You can use basic CSS to control how notes appear. A common setup is
+    showing them on hover or click:
+  </p>
+  <pre><code>
+.note-wrapper {
   position: relative;
   cursor: pointer;
-  color: #0070f3;
-  text-decoration: dotted underline;
+  background-color: #fff7d6;
+  padding: 0.1em 0.2em;
+  border-radius: 5%;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.note-wrapper:hover {
+  background-color: #ffe99f;
 }
 
 .sticky-note {
   display: none;
+  text-align: center;
   position: absolute;
-  top: 1.5em;
+  min-width: 15em;
+  top: 2em;
+  background: #fff8dc;
+  border: 0.1em solid #e0c97f;
+  border-radius: 5%;
+  padding: 0.75em 1em;
+  font-size: 0.9em;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.15);
+  top: 2em;
   left: 0;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 0.5em;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 100;
-  max-width: 250px;
+  line-height: 1.4;
 }
 
 .note-wrapper:hover .sticky-note,
@@ -115,120 +240,83 @@
   display: block;
 }</code></pre>
 
-    <h2>Mobile Support</h2>
-    <p>
-      To support touch devices, consider using <code>:focus-within</code> or
-      click-to-toggle behavior with a small JavaScript helper. You can also
-      adjust the position or use a modal-style display for smaller screens.
-    </p>
+  <h2>Example</h2>
+  <p>
+    Here is an example sentence with a note attached:
+    <span class="note-wrapper">
+      photosynthesis
+      <span class="sticky-note">The process by which green plants use sunlight to synthesize foods
+        from carbon dioxide and water.</span>
+    </span>
+    is vital for life on Earth.
 
-    <h2>Example</h2>
-    <p>
-      Here is an example sentence with a note attached:
-      <span class="note-wrapper">
-        photosynthesis
-        <span class="sticky-note"
-          >The process by which green plants use sunlight to synthesize foods
-          from carbon dioxide and water.</span
-        >
-      </span>
-      is vital for life on Earth.
+  </p>
 
-      <!-- <span> more textr</span>
-      <span class="note-wrapper">
-        <span class="sticky-note">
-          <div class="note-content">
-            <strong class="note-title">Note:</strong>
-            <span>This is a more structured popup with a title and text.</span>
-          </div>
-        </span>
-      </span> -->
-    </p>
+  <h2>Conclusion</h2>
+  <p>
+    SideNote provides a lightweight, flexible solution for adding contextual
+    notes to web documents. Whether you are building an online textbook, a
+    research platform, or a blog, SideNote helps make your content more
+    interactive and informative.
+  </p>
+  <h2>External Modules</h2>
+  <ul>
+    <li>
+      <a href="https://www.npmjs.com/package/css-selector-generator/v/2.1.2">NPM css-selector-generator</a>
+    </li>
+  </ul>
+  <h2>References</h2>
+  <ul>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection">MDN: Window.getSelection</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection">MDN: API Selection</a>
+    </li>
+    <li>
+      <a href="https://w3c.github.io/selection-api/#selection-interface">W3C: SElection-API Interface</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getSelection">MDN: API Document getSelection
+        (all about items between anchor and focus) </a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt">Unpredictable under a shadow
+        tree</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection/rangeCount">Range Count</a>
+    </li>
+  </ul>
+  <h2>Rabbit Holes that I didn't go down</h2>
+  <ul>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM">Using shadow DOM</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Glossary/Shadow_tree">Shadow DOM tree</a>
+    </li>
+  </ul>
+  <h2>TODO</h2>
+  <ul>
+    <li>
+      Document.getSelection(), which works identically to
+      Window.getSelection().
+    </li>
+    <li>
+      difference between selection and focus. Document.activeElement returns
+      the focused element.
+    </li>
+    <li>
+      Note browser compatibility matrix on
+      https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
+    </li>
+    <li>Element node (nodeType === 1) versus a Text node (nodeType === 3)</li>
+  </ul>
 
-    <h2>Advanced Use</h2>
-    <p>
-      SideNote can be extended to auto-inject notes from JSON, markdown files,
-      or CMS sources. With JavaScript, you can dynamically associate text ranges
-      with note metadata, allowing for collaborative annotations or comment
-      layers.
-    </p>
+  <script type="module">
+    import { initSideNote } from "./src/side-note.ts";
+  </script>
+</body>
 
-    <h2>Conclusion</h2>
-    <p>
-      SideNote provides a lightweight, flexible solution for adding contextual
-      notes to web documents. Whether you’re building an online textbook, a
-      research platform, or a blog, SideNote helps make your content more
-      interactive and informative.
-    </p>
-
-    <h2>References</h2>
-    <ul>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection"
-          >MDN: Window.getSelection</a
-        >
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection"
-          >MDN: API Selection</a
-        >
-      </li>
-      <li>
-        <a href="https://w3c.github.io/selection-api/#selection-interface"
-          >W3C: SElection-API Interface</a
-        >
-      </li>
-      <li>Note: Selection is all about anchor and focus of selection</li>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getSelection"
-          >MDN: API Document getSelection</a
-        >
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Glossary/Shadow_tree"
-          >Shadow DOM tree</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM"
-          >Using shadow DOM</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt"
-          >Unpredictable under a shadow tree</a
-        >
-      </li>
-      <li>
-        <a href="https://www.npmjs.com/package/css-selector-generator/v/2.1.2"
-          >NPM JS</a
-        >
-      </li>
-    </ul>
-
-    <h2>TODO</h2>
-    <ul>
-      <li>
-        Document.getSelection(), which works identically to
-        Window.getSelection().
-      </li>
-      <li>
-        difference between selection and focus. Document.activeElement returns
-        the focused element.
-      </li>
-      <li>
-        Note browser compatibility matrix on
-        https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
-      </li>
-      <li>Element node (nodeType === 1) versus a Text node (nodeType === 3)</li>
-    </ul>
-
-    <script type="module">
-      import { initSideNote } from "./src/side-note.ts";
-    </script>
-  </body>
 </html>
