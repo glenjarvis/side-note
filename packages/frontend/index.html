@@ -52,13 +52,13 @@
       <li>Attach notes to sentences, phrases, or words with ease.</li>
       <li>Hover- or click-based note display (mobile-friendly).</li>
       <li>Minimal HTML and CSS required; customizable and lightweight.</li>
-      <li>Supports semantic annotation with
+      <li>
+        Supports semantic annotation with
         <span class="note-wrapper">
-        accessibility
-        <span class="note-popup">Check spelling</span>
+          accessibility
+          <span class="sticky-note">Check spelling</span>
         </span>
         in mind.
-
       </li>
     </ul>
 
@@ -79,7 +79,7 @@
     <div class="example">
       <code>
         &lt;span class="note-wrapper"&gt; Important term &lt;span
-        class="note-popup"&gt; This is a note about the term. &lt;/span&gt;
+        class="sticky-note"&gt; This is a note about the term. &lt;/span&gt;
         &lt;/span&gt;
       </code>
     </div>
@@ -96,7 +96,7 @@
   text-decoration: dotted underline;
 }
 
-.note-popup {
+.sticky-note {
   display: none;
   position: absolute;
   top: 1.5em;
@@ -110,8 +110,8 @@
   max-width: 250px;
 }
 
-.note-wrapper:hover .note-popup,
-.note-wrapper:focus-within .note-popup {
+.note-wrapper:hover .sticky-note,
+.note-wrapper:focus-within .sticky-note {
   display: block;
 }</code></pre>
 
@@ -127,7 +127,7 @@
       Here is an example sentence with a note attached:
       <span class="note-wrapper">
         photosynthesis
-        <span class="note-popup"
+        <span class="sticky-note"
           >The process by which green plants use sunlight to synthesize foods
           from carbon dioxide and water.</span
         >
@@ -136,7 +136,7 @@
 
       <!-- <span> more textr</span>
       <span class="note-wrapper">
-        <span class="note-popup">
+        <span class="sticky-note">
           <div class="note-content">
             <strong class="note-title">Note:</strong>
             <span>This is a more structured popup with a title and text.</span>
@@ -160,5 +160,75 @@
       research platform, or a blog, SideNote helps make your content more
       interactive and informative.
     </p>
+
+    <h2>References</h2>
+    <ul>
+      <li>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection"
+          >MDN: Window.getSelection</a
+        >
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection"
+          >MDN: API Selection</a
+        >
+      </li>
+      <li>
+        <a href="https://w3c.github.io/selection-api/#selection-interface"
+          >W3C: SElection-API Interface</a
+        >
+      </li>
+      <li>Note: Selection is all about anchor and focus of selection</li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getSelection"
+          >MDN: API Document getSelection</a
+        >
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Glossary/Shadow_tree"
+          >Shadow DOM tree</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM"
+          >Using shadow DOM</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt"
+          >Unpredictable under a shadow tree</a
+        >
+      </li>
+      <li>
+        <a href="https://www.npmjs.com/package/css-selector-generator/v/2.1.2"
+          >NPM JS</a
+        >
+      </li>
+    </ul>
+
+    <h2>TODO</h2>
+    <ul>
+      <li>
+        Document.getSelection(), which works identically to
+        Window.getSelection().
+      </li>
+      <li>
+        difference between selection and focus. Document.activeElement returns
+        the focused element.
+      </li>
+      <li>
+        Note browser compatibility matrix on
+        https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
+      </li>
+      <li>Element node (nodeType === 1) versus a Text node (nodeType === 3)</li>
+    </ul>
+
+    <script type="module">
+      import { initSideNote } from "./src/side-note.ts";
+    </script>
   </body>
 </html>

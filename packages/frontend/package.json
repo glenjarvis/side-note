@@ -20,5 +20,8 @@
     "embeddable"
   ],
   "author": "Glen Jarvis <glen@example.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "css-selector-generator": "^3.6.9"
+  }
 }
