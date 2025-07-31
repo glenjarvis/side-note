@@ -135,6 +135,7 @@
         </code></pre>
     </div>
   </li>
+    <li>ShadowDOM: range selection not supported..<span class="note-wrapper">What is this strange new thing called ShadowDOM?<span class="sticky-note">That's a rabbit hole I had to resist. It looks like a project of its own</span></span></li>
   <li>NPM css-selector-generator (an external tool that can walk the DOM to get current selection path)</li>
   <li>Currently unsolved issues: If page changes after SideNote taken. We have text/location to confirm it. Dare we try
     to adjust and ask for input</li>
@@ -275,22 +276,7 @@
     <a href="https://developer.mozilla.org/en-US/docs/Glossary/Shadow_tree">Shadow DOM tree</a>
   </li>
 </ul>
-<h2>TODO</h2>
-<ul>
-  <li>
-    Document.getSelection(), which works identically to
-    Window.getSelection().
-  </li>
-  <li>
-    difference between selection and focus. Document.activeElement returns
-    the focused element.
-  </li>
-  <li>
-    Note browser compatibility matrix on
-    https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
-  </li>
-  <li>Element node (nodeType === 1) versus a Text node (nodeType === 3)</li>
-</ul>
+
 <script type="module">
   import { initSideNote } from "./scripts/side-note.js";
 

@@ -72,12 +72,10 @@ This was started as a **2-day student project** with core goals and optional str
 On any HTML page:
 
 ```html
-<script src="/sidenote.js"></script>
-<script>
-  sidenote.init({
-    endpoint: 'http://localhost:3000/comments',
-    contentSelector: '#main-content'
-  });
+<script type="module">
+  import { initSideNote } from "./scripts/side-note.js";
+
+  initSideNote();
 </script>
 ```
 
@@ -89,18 +87,3 @@ On any HTML page:
 - **No framework lock-in**: Plays well with static sites, React, or anything else.
 - **Empower learners**: Show the power of DOM, selectors, and simple APIs.
 - **Fun to build**: Use it as a starter for more advanced projects later.
-
-
-## TODO
-
-```
-{
-  "compilerOptions": {
-    "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "dist",
-    "emitDeclarationOnly": false,
-    ...
-  }
-}
-```
